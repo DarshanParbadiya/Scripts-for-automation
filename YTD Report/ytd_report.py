@@ -32,8 +32,6 @@ def generate_YTD_report(file_paths):
         'NET AMOUNT': 'NET AMT'
     }, inplace=True)
 
-
- 
     print('CIBC:',len(filtered_cibc))
     print('PLD:',len(filtered_pld))
     

@@ -1,4 +1,9 @@
 import os
+from datetime import datetime
+# Get today's date
+today_date = datetime.now()
+# Format the date
+formatted_date = today_date.strftime("%B %d, %Y")
 class DynamicFileLocations():
     def __init__(self,base_path):
         
@@ -15,13 +20,16 @@ class DynamicFileLocations():
         self.pld_with_rep_code_file_name = os.path.join(base_path,'Intermediate files','filtered_pld_with_rep_name.csv')
         
         self.ivra_path = os.path.join(base_path,'IVRAUM003-BO-20241210-0900am.xls')
-        self.report_file_name = os.path.join(base_path,'Final Report','final_report_YTD.xlsx')
+        self.report_file_name = os.path.join(base_path,'Final Report',f'YTD Report as of {formatted_date}.xlsx')
         
+        self.pld_shareholder_file_path = os.path.join(base_path,'PLD Shareholding for a shareholder.xls')
+        self.sales_support_file_name = os.path.join(base_path,'Final Report',f'Sales Support as of {formatted_date}.xlsx')
         # intermediate files
         self.save_intermediate_files = True
+        
         # dealer codes
         self.update_dealer_codes = False
-        self.update_rep_codes = False
+        self.update_rep_codes = True
         self.dealer_codes_sheet_name = 'Dealer Codes'
         
         # formatting options 

@@ -94,8 +94,12 @@ def update_rep_codes_sheet(file_paths):
         if sheet_name in excel_file.sheet_names:
             print(f"Sheet '{sheet_name}' exists in the Excel file.")
             # read the existing sheet
-            existing_rep_codes = pd.read_excel(file_paths.Transaction_file_path, sheet_name=file_paths.old_sheet)
-            print(f'existing rep codes in {file_paths.old_sheet}:',len(existing_rep_codes))
+            try:
+                existing_rep_codes = pd.read_excel(file_paths.Transaction_file_path, sheet_name=file_paths.old_sheet)
+                print(f'existing rep codes in {file_paths.old_sheet}:',len(existing_rep_codes))
+            except:
+                existing_rep_codes = pd.DataFrame()
+                print('no existing rep codes found')
             # append newly created dealer codes with existing codes
             updated_rep_codes = pd.concat([existing_rep_codes,unique_rep_codes],axis=0)
             updated_rep_codes = updated_rep_codes.drop_duplicates(subset='REP CODE')

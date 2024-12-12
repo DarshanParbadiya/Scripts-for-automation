@@ -1,6 +1,6 @@
 import pandas as pd
 from openpyxl import load_workbook
-def get_the_dealer_mapping_pld(file_paths):
+def update_dealer_codes_sheet(file_paths):
     try:
         pld = pd.read_excel(file_paths.pld_path)
         pld.columns = pld.columns.str.replace('\n', ' ').str.strip()
